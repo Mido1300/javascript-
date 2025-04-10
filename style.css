@@ -1,13 +1,14 @@
 :root {
-    --primary: #8B0000;
-    --secondary: #50c878;
-    --profile-frame: #2ecc71;
-    --background: #eef2f7;
+    --primary: #8B0000; /* Dark red */
+    --secondary: #50c878; /* Green for active states */
+    --profile-frame: #2ecc71; /* Green for profile frame */
+    --background: #f7f9fc;
     --card-bg: #ffffff;
-    --text: #1e293b;
-    --text-muted: #64748b;
-    --shadow: 0 8px 32px rgba(0,0,0,0.1);
-    --shadow-sm: 0 4px 16px rgba(0,0,0,0.05);
+    --text: #1a202c;
+    --text-light: #718096;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 15px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 * {
@@ -17,119 +18,65 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: var(--background);
     color: var(--text);
-    height: 100vh;
-    overflow: hidden;
+    line-height: 1.6;
 }
 
-.dashboard-container {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-}
-
-.sidebar {
-    width: 280px;
+.header {
     background: var(--card-bg);
     padding: 2rem;
-    box-shadow: var(--shadow-sm);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 3rem;
 }
 
-.sidebar-header h1 {
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header h1 {
     color: var(--primary);
-    font-weight: 700;
-    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
-.sidebar-header p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+.header p {
+    color: var(--text-light);
 }
 
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.nav-item {
-    background: none;
-    border: none;
-    padding: 0.75rem 1rem;
-    text-align: left;
-    color: var(--text-muted);
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.nav-item:hover, .nav-item.active {
-    background: var(--primary);
-    color: white;
-    box-shadow: var(--shadow-sm);
-}
-
-.main-content {
-    flex: 1;
-    padding: 2rem;
-    overflow-y: auto;
-}
-
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.main-header h2 {
-    color: var(--primary);
-    font-weight: 700;
-}
-
-.header-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.content-grid {
+.dashboard-grid {
+    max-width: 1400px;
+    margin: 0 auto 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    height: calc(100% - 80px);
+    padding: 0 2rem;
 }
 
 .card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 1.5rem;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
 }
 
-.card h3 {
+.card h2 {
     color: var(--primary);
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
 
-.team-card, .logs-card {
-    grid-row: span 2;
-}
-
-.table-container {
-    max-height: 400px;
-    overflow-y: auto;
+.table-wrapper {
+    overflow-x: auto;
     border-radius: 8px;
 }
 
@@ -146,32 +93,43 @@ th, td {
 th {
     background: var(--primary);
     color: white;
-    position: sticky;
-    top: 0;
+    font-weight: 600;
+}
+
+tr {
+    transition: background 0.2s;
+}
+
+tr:nth-child(even) {
+    background: rgba(139, 0, 0, 0.03);
 }
 
 tr:hover {
-    background: rgba(139, 0, 0, 0.05);
+    background: rgba(139, 0, 0, 0.1);
 }
 
-.activity-list {
+.activity-feed {
     list-style: none;
-    max-height: 300px;
-    overflow-y: auto;
 }
 
-.activity-list li {
-    padding: 0.75rem;
+.activity-feed li {
+    padding: 1rem;
     border-bottom: 1px solid rgba(0,0,0,0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background 0.2s;
 }
 
-.profile-content {
-    padding: 1rem;
+.activity-feed li:hover {
+    background: rgba(139, 0, 0, 0.05);
+}
+
+.profile-container {
     background: rgba(139, 0, 0, 0.03);
-    border-radius: 8px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm) inset;
 }
 
 .profile-card {
@@ -181,25 +139,29 @@ tr:hover {
 }
 
 .profile-pic {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     border: 4px solid var(--profile-frame);
+    object-fit: cover;
     box-shadow: var(--shadow-sm);
 }
 
 .profile-info h3 {
-    font-weight: 700;
+    color: var(--text);
+    font-weight: 600;
 }
 
 .profile-info p {
-    color: var(--text-muted);
-    margin: 0.2rem 0;
+    color: var(--text-light);
+    margin: 0.3rem 0;
 }
 
 .status {
+    display: inline-block;
     padding: 0.4rem 1rem;
     border-radius: 20px;
+    font-size: 0.9rem;
     font-weight: 500;
 }
 
@@ -213,41 +175,43 @@ tr:hover {
     color: white;
 }
 
-.status-grid {
+.state-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
 
-.status-box {
-    padding: 1rem;
+.state-item {
     background: rgba(139, 0, 0, 0.03);
+    padding: 1rem;
     border-radius: 8px;
+    box-shadow: var(--shadow-sm) inset;
 }
 
-.status-box h4 {
+.state-item h3 {
+    font-size: 1rem;
     color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
-.status-box pre {
+.state-display {
     background: white;
     padding: 0.75rem;
     border-radius: 6px;
-    font-size: 0.85rem;
-    max-height: 150px;
-    overflow-y: auto;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-sm);
 }
 
-.logs-content {
-    background: #1e293b;
-    color: #f1f5f9;
+.logs-display {
+    background: #1a202c;
+    color: #e2e8f0;
     padding: 1rem;
     border-radius: 8px;
     font-family: 'Fira Code', monospace;
     font-size: 0.9rem;
-    max-height: 400px;
+    max-height: 300px;
     overflow-y: auto;
+    box-shadow: var(--shadow-sm) inset;
 }
 
 .action-btn {
@@ -256,25 +220,18 @@ tr:hover {
     border: none;
     padding: 0.6rem 1.2rem;
     border-radius: 8px;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     box-shadow: var(--shadow-sm);
 }
 
 .action-btn:hover {
     background: #660000;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
 }
 
 .action-btn.small {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
-}
-
-.refresh-btn {
-    background: var(--secondary);
-}
-
-.refresh-btn:hover {
-    background: #3da860;
 }
