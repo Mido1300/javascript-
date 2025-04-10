@@ -43,7 +43,7 @@ const stateElements = {
     initial: document.getElementById('initial-state'),
     current: document.getElementById('current-state')
 };
-const userState = createStateManager({ name: 'Alex', status: 'offline' });
+const userState = createStateManager({ name: 'Alex', status: 'Inactive' }); // Changed from 'offline' to 'Inactive'
 stateElements.initial.textContent = JSON.stringify(userState.getState(), null, 2);
 stateElements.current.textContent = JSON.stringify(userState.getState(), null, 2);
 
@@ -52,7 +52,7 @@ userState.subscribe((state) => {
 });
 
 // Simulate state updates
-setTimeout(() => userState.setState({ status: 'online' }), 1000);
+setTimeout(() => userState.setState({ status: 'Active' }), 1000); // Changed from 'online' to 'Active'
 setTimeout(() => userState.setState({ lastSeen: new Date().toISOString() }), 2000);
 
 // Logging
