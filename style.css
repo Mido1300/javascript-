@@ -1,10 +1,11 @@
 :root {
-    --primary: #4a90e2;
+    --primary: #8B0000; /* Changed from blue (#4a90e2) to dark red */
     --secondary: #50c878;
     --background: #f0f4f8;
     --card-bg: #ffffff;
     --text: #2d3748;
     --shadow: rgba(0, 0, 0, 0.1);
+    --profile-frame: #2ecc71; /* Added green for profile picture frame */
 }
 
 body {
@@ -90,7 +91,7 @@ tr:nth-child(even) {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 3px solid var(--primary);
+    border: 3px solid var(--profile-frame); /* Changed to use green */
     object-fit: cover;
 }
 
@@ -148,7 +149,7 @@ tr:nth-child(even) {
 }
 
 .action-btn:hover {
-    background: #357abd;
+    background: #660000; /* Darker shade of dark red for hover */
 }
 
 .action-btn.small {
