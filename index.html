@@ -3,81 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite User Dashboard</title>
+    <title>User Dashboard - Premium Edition</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="dashboard-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1>Elite Dashboard</h1>
-                <p>Premium Management</p>
-            </div>
-            <nav class="sidebar-nav">
-                <button class="nav-item active">Overview</button>
-                <button class="nav-item">Analytics</button>
-                <button class="nav-item">Settings</button>
-            </nav>
-        </aside>
+    <header class="header">
+        <div class="header-content">
+            <h1>User Dashboard</h1>
+            <p>A Premium JavaScript Experience</p>
+        </div>
+    </header>
 
-        <main class="main-content">
-            <header class="main-header">
-                <h2>Welcome back, Admin</h2>
-                <div class="header-actions">
-                    <button class="action-btn refresh-btn">Refresh</button>
+    <main class="dashboard-grid">
+        <section class="card users-card">
+            <h2>Team Members</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="processed-users"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card posts-card">
+            <h2>Recent Activity</h2>
+            <ul id="user-posts" class="activity-feed"></ul>
+        </section>
+
+        <section class="card profile-card">
+            <h2>Featured Member</h2>
+            <div id="user-profile" class="profile-container"></div>
+        </section>
+
+        <section class="card state-card">
+            <h2>Status Updates</h2>
+            <div class="state-grid">
+                <div class="state-item">
+                    <h3>Initial State</h3>
+                    <pre id="initial-state" class="state-display"></pre>
                 </div>
-            </header>
-
-            <div class="content-grid">
-                <section class="card team-card">
-                    <h3>Team Overview</h3>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="processed-users"></tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section class="card activity-card">
-                    <h3>Recent Activity</h3>
-                    <ul id="user-posts" class="activity-list"></ul>
-                </section>
-
-                <section class="card profile-card">
-                    <h3>Featured Member</h3>
-                    <div id="user-profile" class="profile-content"></div>
-                </section>
-
-                <section class="card status-card">
-                    <h3>Status Monitor</h3>
-                    <div class="status-grid">
-                        <div class="status-box">
-                            <h4>Initial</h4>
-                            <pre id="initial-state"></pre>
-                        </div>
-                        <div class="status-box">
-                            <h4>Current</h4>
-                            <pre id="current-state"></pre>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="card logs-card">
-                    <h3>System Logs</h3>
-                    <pre id="console-output" class="logs-content"></pre>
-                </section>
+                <div class="state-item">
+                    <h3>Current State</h3>
+                    <pre id="current-state" class="state-display"></pre>
+                </div>
             </div>
-        </main>
-    </div>
+        </section>
+
+        <section class="card logs-card">
+            <h2>System Activity</h2>
+            <pre id="console-output" class="logs-display"></pre>
+        </section>
+    </main>
 
     <script type="module" src="app.js"></script>
 </body>
