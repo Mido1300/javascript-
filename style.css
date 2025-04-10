@@ -50,6 +50,36 @@ body {
     gap: 1rem;
 }
 
+.day-navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.day-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.day-btn:hover {
+    background: #660000;
+}
+
+.day-btn.active {
+    background: #660000;
+    box-shadow: var(--shadow-md);
+}
+
 .dashboard-header h1 {
     color: var(--primary);
     font-weight: 700;
@@ -61,6 +91,7 @@ body {
     font-weight: 300;
 }
 
+/* Rest of the CSS remains the same */
 .dashboard-content {
     display: flex;
     flex-direction: column;
@@ -268,7 +299,7 @@ tr:hover {
 }
 
 .refresh-btn {
-    background: var(--primary); /* Changed from secondary (green) to primary (dark red) */
+    background: var(--primary);
 }
 
 .refresh-btn:hover {
