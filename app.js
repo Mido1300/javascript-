@@ -6,7 +6,7 @@ import {
 } from './userProfile.js';
 import { users, sampleUser } from './users.js';
 
-// Users table
+// Team table
 const processedUsers = processUserData(users);
 const usersTable = document.getElementById('processed-users');
 processedUsers.forEach((user) => {
@@ -15,28 +15,28 @@ processedUsers.forEach((user) => {
         <td>${user.id}</td>
         <td>${user.fullName}</td>
         <td>${user.email}</td>
-        <td><button class="action-btn" onclick="alert('Viewing ${user.fullName}\'s profile')">View</button></td>
+        <td><button class="action-btn" onclick="alert('Viewing ${user.fullName}\'s details')">Details</button></td>
     `;
     usersTable.appendChild(row);
 });
 
-// Posts feed
+// Activity feed
 const postsList = document.getElementById('user-posts');
 fetchUserPosts(1).then((titles) => {
-    titles.slice(0, 5).forEach((title, index) => { // Limited to 5 for better layout
+    titles.slice(0, 6).forEach((title, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <span>${index + 1}. ${title.substring(0, 50)}${title.length > 50 ? '...' : ''}</span>
-            <button class="action-btn small">Like</button>
+            <span>${index + 1}. ${title.substring(0, 40)}${title.length > 40 ? '...' : ''}</span>
+            <button class="action-btn small">Comment</button>
         `;
         postsList.appendChild(li);
     });
 });
 
-// Profile display
+// Profile
 document.getElementById('user-profile').innerHTML = createUserProfileHTML(sampleUser);
 
-// State management
+// Status monitor
 const stateElements = {
     initial: document.getElementById('initial-state'),
     current: document.getElementById('current-state')
@@ -54,12 +54,21 @@ setTimeout(() => userState.setState({ lastSeen: new Date().toLocaleString() }), 
 
 // Logs
 const consoleOutput = document.getElementById('console-output');
-const log = (message) => consoleOutput.textContent += `${new Date().toLocaleTimeString()} - ${message}\n`;
+const log = (message) => {
+    consoleOutput.textContent += `${new Date().toLocaleTimeString()} - ${message}\n`;
+    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+};
 
-log('Initialized dashboard');
-log('Users loaded: ' + processedUsers.length + ' active members');
+log('Dashboard initialized');
+log(`Loaded ${processedUsers.length} team members`);
 fetchUserPosts(1)
-    .then((titles) => log('Loaded ' + titles.length + ' posts'))
-    .catch((error) => log('Error: ' + error));
-log('Profile rendered: ' + sampleUser.fullName);
-userState.subscribe((state) => log('State update: ' + JSON.stringify(state)));
+    .then((titles) => log(`Fetched ${titles.length} activities`))
+    .catch((error) => log(`Error: ${error}`));
+log(`Profile loaded: ${sampleUser.fullName}`);
+userState.subscribe((state) => log(`Status: ${JSON.stringify(state)}`));
+
+// Refresh button
+document.querySelector('.refresh-btn').addEventListener('click', () => {
+    log('Dashboard refreshed');
+    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+});
