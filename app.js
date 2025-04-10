@@ -6,16 +6,18 @@ import {
 } from './userProfile.js';
 import { users, sampleUser } from './users.js';
 
-// Team members
+// Team members with view functionality
 const processedUsers = processUserData(users);
 const usersTable = document.getElementById('processed-users');
-processedUsers.forEach((user) => {
+let currentFeaturedUser = sampleUser;
+
+processedUsers.forEach((user, index) => {
     const row = document.createElement('tr');
     row.innerHTML = `
         <td>${user.id}</td>
         <td>${user.fullName}</td>
         <td>${user.email}</td>
-        <td><button class="action-btn" onclick="alert('Viewing ${user.fullName}\'s profile')">View</button></td>
+        <td><button class="action-btn view-btn" data-index="${index}">View</button></td>
     `;
     usersTable.appendChild(row);
 });
@@ -33,8 +35,28 @@ fetchUserPosts(1).then((titles) => {
     });
 });
 
-// Featured member
-document.getElementById('user-profile').innerHTML = createUserProfileHTML(sampleUser);
+// Featured member initial display
+const profileDisplay = document.getElementById('user-profile');
+profileDisplay.innerHTML = createUserProfileHTML(currentFeaturedUser);
+
+// Update featured member on view click
+document.querySelectorAll('.view-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const index = e.target.getAttribute('data-index');
+        const selectedUser = processedUsers[index];
+        currentFeaturedUser = {
+            id: selectedUser.id,
+            first: selectedUser.fullName.split(' ')[0],
+            last: selectedUser.fullName.split(' ')[1],
+            email: selectedUser.email,
+            position: 'Team Member', // Default position, adjust if needed
+            active: true, // Assuming all processed users are active
+            fullName: selectedUser.fullName
+        };
+        profileDisplay.innerHTML = createUserProfileHTML(currentFeaturedUser);
+        log(`Featured member updated: ${currentFeaturedUser.fullName}`);
+    });
+});
 
 // Status monitor
 const stateElements = {
@@ -64,7 +86,7 @@ log(`Loaded ${processedUsers.length} active team members`);
 fetchUserPosts(1)
     .then((titles) => log(`Fetched ${titles.length} recent activities`))
     .catch((error) => log(`Error fetching activities: ${error}`));
-log(`Profile displayed: ${sampleUser.fullName}`);
+log(`Profile displayed: ${currentFeaturedUser.fullName}`);
 userState.subscribe((state) => log(`Status updated: ${JSON.stringify(state)}`));
 
 // Refresh button
