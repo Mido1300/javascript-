@@ -6,6 +6,20 @@ import {
 } from './userProfile.js';
 import { users, sampleUser } from './users.js';
 
+// Daily tasks data
+const dailyTasks = {
+    1: ['ES6+ features', 'Arrow functions', 'Destructuring', 'Promises', 'Async/await'],
+    2: ['JSX', 'Components', 'Props', 'State', 'Component lifecycle'],
+    3: ['useState', 'useEffect', 'useContext', 'useReducer', 'Custom hooks'],
+    4: ['Composition', 'HOCs', 'Render props', 'Controlled components'],
+    5: ['React Router', 'Navigation patterns', 'Route protection'],
+    6: ['Form events', 'Controlled inputs', 'Validation', 'Error handling'],
+    7: ['Fetch API', 'Axios', 'Loading states', 'Data transformation'],
+    8: ['SSR', 'SSG', 'File-based routing', 'API routes'],
+    9: ['TypeScript basics', 'Typing props', 'Typing hooks', 'Typing events'],
+    10: ['Context API', 'Redux', 'State management strategies']
+};
+
 // Team members with view functionality
 const processedUsers = processUserData(users);
 const usersTable = document.getElementById('processed-users');
@@ -22,18 +36,37 @@ processedUsers.forEach((user, index) => {
     usersTable.appendChild(row);
 });
 
-// Recent activity
+// Daily tasks display
 const postsList = document.getElementById('user-posts');
-fetchUserPosts(1).then((titles) => {
-    titles.slice(0, 8).forEach((title, index) => {
+function displayTasks(day) {
+    postsList.innerHTML = '';
+    const tasks = dailyTasks[day] || [];
+    tasks.forEach((task, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <span>${index + 1}. ${title.substring(0, 50)}${title.length > 50 ? '...' : ''}</span>
-            <button class="action-btn small">Like</button>
+            <span>${index + 1}. ${task}</span>
+            <button class="action-btn small">Complete</button>
         `;
         postsList.appendChild(li);
     });
+}
+
+// Day navigation
+document.querySelectorAll('.day-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const day = e.target.getAttribute('data-day');
+        displayTasks(day);
+        log(`Switched to Day ${day} tasks`);
+        
+        // Remove active class from all buttons and add to clicked one
+        document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+    });
 });
+
+// Initial display (Day 1)
+displayTasks(1);
+document.querySelector('.day-btn[data-day="1"]').classList.add('active');
 
 // Featured member initial display
 const profileDisplay = document.getElementById('user-profile');
@@ -49,8 +82,8 @@ document.querySelectorAll('.view-btn').forEach(button => {
             first: selectedUser.fullName.split(' ')[0],
             last: selectedUser.fullName.split(' ')[1],
             email: selectedUser.email,
-            position: 'Team Member', // Default position, adjust if needed
-            active: true, // Assuming all processed users are active
+            position: 'Team Member',
+            active: true,
             fullName: selectedUser.fullName
         };
         profileDisplay.innerHTML = createUserProfileHTML(currentFeaturedUser);
@@ -83,16 +116,13 @@ const log = (message) => {
 
 log('System initialized');
 log(`Loaded ${processedUsers.length} active team members`);
-fetchUserPosts(1)
-    .then((titles) => log(`Fetched ${titles.length} recent activities`))
-    .catch((error) => log(`Error fetching activities: ${error}`));
 log(`Profile displayed: ${currentFeaturedUser.fullName}`);
 userState.subscribe((state) => log(`Status updated: ${JSON.stringify(state)}`));
 
 // Refresh button
 document.querySelector('.refresh-btn').addEventListener('click', () => {
     log('Data refreshed');
-    fetchUserPosts(1)
-        .then((titles) => log(`Refreshed ${titles.length} activities`))
-        .catch((error) => log(`Refresh error: ${error}`));
+    const activeDay = document.querySelector('.day-btn.active')?.getAttribute('data-day') || '1';
+    displayTasks(activeDay);
+    log(`Refreshed Day ${activeDay} tasks`);
 });
