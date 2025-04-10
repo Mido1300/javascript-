@@ -3,58 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard - Modern JS Demo</title>
+    <title>User Dashboard - Premium Edition</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-        <h1>User Dashboard</h1>
-        <p>Modern JavaScript Features Showcase</p>
+        <div class="header-content">
+            <h1>User Dashboard</h1>
+            <p>A Premium JavaScript Experience</p>
+        </div>
     </header>
 
-    <main class="container">
-        <section class="card">
+    <main class="dashboard-grid">
+        <section class="card users-card">
             <h2>Team Members</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="processed-users"></tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="processed-users"></tbody>
+                </table>
+            </div>
         </section>
 
-        <section class="card">
-            <h2>Recent Posts</h2>
-            <ul id="user-posts" class="posts-list"></ul>
+        <section class="card posts-card">
+            <h2>Recent Activity</h2>
+            <ul id="user-posts" class="activity-feed"></ul>
         </section>
 
-        <section class="card">
-            <h2>Featured Profile</h2>
-            <div id="user-profile"></div>
+        <section class="card profile-card">
+            <h2>Featured Member</h2>
+            <div id="user-profile" class="profile-container"></div>
         </section>
 
-        <section class="card">
-            <h2>Status Monitor</h2>
-            <div class="state-container">
-                <div class="state-box">
-                    <strong>Initial:</strong>
-                    <pre id="initial-state"></pre>
+        <section class="card state-card">
+            <h2>Status Updates</h2>
+            <div class="state-grid">
+                <div class="state-item">
+                    <h3>Initial State</h3>
+                    <pre id="initial-state" class="state-display"></pre>
                 </div>
-                <div class="state-box">
-                    <strong>Current:</strong>
-                    <pre id="current-state"></pre>
+                <div class="state-item">
+                    <h3>Current State</h3>
+                    <pre id="current-state" class="state-display"></pre>
                 </div>
             </div>
         </section>
 
-        <section class="card">
-            <h2>System Logs</h2>
-            <pre id="console-output" class="log-output"></pre>
+        <section class="card logs-card">
+            <h2>System Activity</h2>
+            <pre id="console-output" class="logs-display"></pre>
         </section>
     </main>
 
