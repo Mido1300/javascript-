@@ -1,49 +1,96 @@
 :root {
-    --primary: #8B0000; /* Changed from blue (#4a90e2) to dark red */
-    --secondary: #50c878;
-    --background: #f0f4f8;
+    --primary: #8B0000; /* Dark red */
+    --secondary: #50c878; /* Green for active */
+    --profile-frame: #2ecc71; /* Green for profile */
+    --background: #f5f7fa;
     --card-bg: #ffffff;
-    --text: #2d3748;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --profile-frame: #2ecc71; /* Added green for profile picture frame */
+    --text: #172b4d;
+    --text-light: #6b7280;
+    --shadow-sm: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
     background: var(--background);
     color: var(--text);
-    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-    color: var(--primary);
-}
-
-.container {
-    max-width: 1200px;
+.dashboard-wrapper {
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 2rem;
+}
+
+.dashboard-header {
+    background: var(--card-bg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-header h1 {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.dashboard-header p {
+    color: var(--text-light);
+    font-weight: 300;
+}
+
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .card {
     background: var(--card-bg);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px var(--shadow);
-    transition: transform 0.2s;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-6px);
 }
 
 .card h2 {
     color: var(--primary);
-    margin-top: 0;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm) inset;
 }
 
 table {
@@ -52,57 +99,89 @@ table {
 }
 
 th, td {
-    padding: 12px;
+    padding: 1.2rem;
     text-align: left;
 }
 
 th {
     background: var(--primary);
     color: white;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+}
+
+tr {
+    transition: background 0.2s;
 }
 
 tr:nth-child(even) {
-    background: #f8fafc;
+    background: rgba(139, 0, 0, 0.02);
 }
 
-.posts-list {
+tr:hover {
+    background: rgba(139, 0, 0, 0.08);
+}
+
+.activity-feed {
     list-style: none;
-    padding: 0;
+    max-height: 350px;
+    overflow-y: auto;
+    background: rgba(139, 0, 0, 0.02);
+    border-radius: 12px;
+    padding: 1rem;
 }
 
-.post-item {
+.activity-feed li {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.activity-feed li:hover {
+    background: rgba(139, 0, 0, 0.05);
+}
+
+.profile-display {
+    background: rgba(139, 0, 0, 0.02);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm) inset;
 }
 
 .profile-card {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 15px;
-    background: #f8fafc;
-    border-radius: 8px;
+    gap: 2rem;
 }
 
 .profile-pic {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    border: 3px solid var(--profile-frame); /* Changed to use green */
+    border: 5px solid var(--profile-frame);
+    box-shadow: var(--shadow-sm);
     object-fit: cover;
 }
 
-.profile-info {
-    flex: 1;
+.profile-info h3 {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.profile-info p {
+    color: var(--text-light);
+    margin: 0.4rem 0;
 }
 
 .status {
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.9em;
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
 .status-active {
@@ -115,44 +194,77 @@ tr:nth-child(even) {
     color: white;
 }
 
-.state-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.status-container {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
-.state-box pre {
-    background: #edf2f7;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 0.9em;
+.status-card {
+    flex: 1;
+    background: rgba(139, 0, 0, 0.02);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm) inset;
+    min-width: 300px;
 }
 
-.log-output {
-    background: #2d3748;
-    color: #edf2f7;
-    padding: 15px;
-    border-radius: 5px;
-    font-family: 'Fira Code', monospace;
+.status-card h3 {
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.status-card pre {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
     max-height: 200px;
     overflow-y: auto;
+    box-shadow: var(--shadow-sm);
+}
+
+.logs-panel {
+    background: #172b4d;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: var(--shadow-sm) inset;
 }
 
 .action-btn {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .action-btn:hover {
-    background: #660000; /* Darker shade of dark red for hover */
+    background: #660000;
+    box-shadow: var(--shadow-md);
 }
 
 .action-btn.small {
-    padding: 4px 8px;
-    font-size: 0.9em;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.refresh-btn {
+    background: var(--secondary);
+}
+
+.refresh-btn:hover {
+    background: #3da860;
+    box-shadow: var(--shadow-md);
 }
