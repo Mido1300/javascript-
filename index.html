@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Modern JS Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>User Dashboard</h1>
+        <p>Modern JavaScript Features Showcase</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Team Members</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="processed-users"></tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>Recent Posts</h2>
+            <ul id="user-posts" class="posts-list"></ul>
+        </section>
+
+        <section class="card">
+            <h2>Featured Profile</h2>
+            <div id="user-profile"></div>
+        </section>
+
+        <section class="card">
+            <h2>Status Monitor</h2>
+            <div class="state-container">
+                <div class="state-box">
+                    <strong>Initial:</strong>
+                    <pre id="initial-state"></pre>
+                </div>
+                <div class="state-box">
+                    <strong>Current:</strong>
+                    <pre id="current-state"></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>System Logs</h2>
+            <pre id="console-output" class="log-output"></pre>
+        </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
