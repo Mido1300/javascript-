@@ -27,7 +27,7 @@ export function createUserProfileHTML(user) {
                 <p>Position: ${user.position}</p>
                 <span class="status ${statusClass}">${user.active ? 'Active' : 'Inactive'}</span>
             </div>
-            <button class="action-btn">Message</button>
+            <button class="action-btn message-btn">Message</button>
         </div>
     `;
 }
