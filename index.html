@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <h1>Client Portal</h1>
         <nav>
@@ -14,16 +16,17 @@
         </nav>
     </header>
     
+    <!-- Main Content Section -->
     <main>
         <section class="panel">
             <h2>Registered Clients</h2>
-            <p>View all registered clients, sorted by registration date.</p>
+            <p>View all active clients, sorted by company name.</p>
             <table>
                 <thead>
                     <tr>
                         <th>Client ID</th>
-                        <th>Company Name</th>
-                        <th>Contact Email</th>
+                        <th>Company</th>
+                        <th>Email</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -38,39 +41,38 @@
         </section>
 
         <section class="panel">
-            <h2>Account Overview</h2>
-            <div id="account-details" class="account-container">
-                <p>Loading account information...</p>
-            </div>
+            <h2>Account Details</h2>
+            <div id="account-details" class="account-container"></div>
             <form id="update-contact">
-                <label for="contact-phone">Update Phone:</label>
+                <label for="contact-phone">Phone Number</label>
                 <input type="tel" id="contact-phone" name="phone" placeholder="+1-555-555-5555">
-                <button type="submit">Save</button>
+                <button type="submit">Update</button>
             </form>
         </section>
 
         <section class="panel">
             <h2>System Status</h2>
-            <p>Monitor real-time system updates.</p>
+            <p>Track real-time system updates.</p>
             <div class="status-tracker">
                 <div class="status-entry">
-                    <strong>System Boot:</strong> <span id="boot-status">Initializing...</span>
+                    <strong>System Boot</strong> <span id="boot-status">Initializing...</span>
                 </div>
                 <div class="status-entry">
-                    <strong>Current Activity:</strong> <span id="activity-status">Fetching Client Data</span>
+                    <strong>Activity</strong> <span id="activity-status">Fetching Data</span>
                 </div>
                 <div class="status-entry">
-                    <strong>Recent Update:</strong> <span id="update-status-1">Account Verified</span>
+                    <strong>Update</strong> <span id="update-status-1">Account Verified</span>
                 </div>
                 <div class="status-entry">
-                    <strong>Recent Update:</strong> <span id="update-status-2">Transactions Synced</span>
+                    <strong>Update</strong> <span id="update-status-2">Data Synced</span>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer Section -->
     <footer>
-        <p>© 2025 Client Portal. All rights reserved.</p>
+        <p>© 2025 Client Portal</p>
     </footer>
 
     <script type="module" src="main.js"></script>
