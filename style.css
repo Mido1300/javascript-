@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,250 +6,190 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #1a1a1a; /* Dark background for contrast */
-    color: #e0e0e0; /* Light text for readability */
+    font-family: 'Inter', sans-serif;
+    background: #181818;
+    color: #e5e5e5;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
-/* Headings */
-h1, h2 {
-    color: #9b1d20; /* Dark red for headings */
-    font-weight: 600;
-}
-
-/* Header */
+/* Header Styles */
 header {
-    width: 100%;
-    background: #2a2a2a; /* Darker header background */
-    padding: 1.5rem;
+    background: #222222;
+    padding: 1.2rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 header h1 {
-    font-size: 1.8rem;
-    margin-left: 1rem;
-}
-
-header nav {
-    margin-right: 1rem;
+    font-size: 1.7rem;
+    color: #a31621;
 }
 
 #logout-btn {
-    background: #9b1d20; /* Dark red button */
+    background: #a31621;
     color: #ffffff;
     border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    font-size: 1rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s;
 }
 
 #logout-btn:hover {
-    background: #7a1719; /* Darker red on hover */
-    transform: translateY(-2px);
+    background: #821219;
 }
 
-/* Main Content */
+/* Main Content Styles */
 main {
-    width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 2rem auto;
-    padding: 0 1.5rem;
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
 }
 
-/* Panel Styling */
+/* Panel Styles */
 .panel {
-    background: #2a2a2a; /* Dark panel background */
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    border-left: 6px solid #9b1d20; /* Dark red accent */
-    width: 100%;
+    background: #222222;
+    padding: 1.8rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+    border-left: 5px solid #a31621;
 }
 
 .panel h2 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    color: #a31621;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
 }
 
 .panel p {
-    color: #b0b0b0;
+    color: #b5b5b5;
+    font-size: 0.95rem;
     margin-bottom: 1rem;
 }
 
-/* Table Styling */
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    background: #333333; /* Slightly lighter table background */
-    border-radius: 8px;
+    background: #2c2c2c;
+    border-radius: 10px;
     overflow: hidden;
 }
 
 th, td {
-    padding: 1rem;
+    padding: 0.9rem;
     text-align: left;
-    border-bottom: 1px solid #444444;
-    color: #e0e0e0;
+    border-bottom: 1px solid #3a3a3a;
 }
 
 th {
-    background: #9b1d20; /* Dark red header */
+    background: #a31621;
     color: #ffffff;
     font-weight: 600;
 }
 
 tr:nth-child(even) {
-    background: #3a3a3a; /* Alternating row color */
+    background: #282828;
 }
 
-tr:hover {
-    background: #4a4a4a; /* Subtle hover effect */
-}
-
-/* Transaction List */
+/* List Styles */
 ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
 ul li {
+    background: #2c2c2c;
     padding: 0.8rem;
-    background: #333333;
-    margin-bottom: 0.5rem;
-    border-radius: 6px;
-    color: #e0e0e0;
-    transition: background 0.3s;
-}
-
-ul li:hover {
-    background: #4a4a4a;
-}
-
-/* Account Overview and Form */
-.account-container {
-    padding: 1.5rem;
-    background: #333333;
+    margin-bottom: 0.6rem;
     border-radius: 8px;
+}
+
+/* Form Styles */
+.account-container {
+    background: #2c2c2c;
+    padding: 1.2rem;
+    border-radius: 10px;
     margin-bottom: 1rem;
-    text-align: center;
 }
 
 #update-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 300px;
-    margin: 0 auto;
+    display: grid;
+    gap: 0.8rem;
+    max-width: 400px;
 }
 
 #update-contact label {
-    color: #e0e0e0;
-    font-weight: 500;
-    text-align: left;
+    color: #e5e5e5;
+    font-size: 0.95rem;
 }
 
 #update-contact input {
-    padding: 0.8rem;
-    border: 1px solid #444444;
-    border-radius: 6px;
-    background: #3a3a3a;
-    color: #e0e0e0;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-#update-contact input:focus {
-    outline: none;
-    border-color: #9b1d20;
+    padding: 0.7rem;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    background: #2c2c2c;
+    color: #e5e5e5;
 }
 
 #update-contact button {
-    background: #9b1d20;
+    background: #a31621;
     color: #ffffff;
     border: none;
-    padding: 0.8rem;
-    border-radius: 6px;
-    font-size: 1rem;
+    padding: 0.7rem;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
 }
 
 #update-contact button:hover {
-    background: #7a1719;
-    transform: translateY(-2px);
+    background: #821219;
 }
 
-/* System Status */
+/* Status Tracker Styles */
 .status-tracker {
-    background: #333333;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 6px solid #9b1d20;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    background: #2c2c2c;
+    padding: 1.2rem;
+    border-radius: 10px;
+    display: grid;
+    gap: 0.8rem;
 }
 
 .status-entry {
     display: flex;
-    align-items: center;
     gap: 0.5rem;
-    color: #e0e0e0;
+    align-items: center;
 }
 
 .status-entry strong {
-    color: #9b1d20;
-    font-weight: 600;
+    color: #a31621;
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
-    width: 100%;
-    background: #2a2a2a;
+    background: #222222;
     padding: 1rem;
     text-align: center;
-    color: #b0b0b0;
+    color: #b5b5b5;
     font-size: 0.9rem;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
-    margin-top: auto;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        gap: 1rem;
-    }
-
-    header h1 {
-        margin: 0;
+        gap: 0.8rem;
     }
 
     main {
-        padding: 0 1rem;
-    }
-
-    .panel {
-        padding: 1.5rem;
-    }
-
-    table, th, td {
-        font-size: 0.9rem;
-    }
-
-    #update-contact {
-        max-width: 100%;
+        grid-template-columns: 1fr;
     }
 }
