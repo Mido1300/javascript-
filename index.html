@@ -1,23 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React Training Program</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module">
-    // Dynamically import the task based on query parameter or default to Day2Task
-    const urlParams = new URLSearchParams(window.location.search);
-    const task = urlParams.get('task') || 'Day2Task';
-    import(`./${task}.js`).then(module => {
-      const { default: App } = module;
-      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-    });
-  </script>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <header>
+        <h1>Client Portal</h1>
+        <nav>
+            <button id="logout-btn">Log Out</button>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="panel">
+            <h2>Registered Clients</h2>
+            <p>View all registered clients, sorted by registration date.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client ID</th>
+                        <th>Company Name</th>
+                        <th>Contact Email</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="client-list"></tbody>
+            </table>
+        </section>
+
+        <section class="panel">
+            <h2>Recent Transactions</h2>
+            <p>Latest transactions for client ID 1001.</p>
+            <ul id="transaction-history"></ul>
+        </section>
+
+        <section class="panel">
+            <h2>Account Overview</h2>
+            <div id="account-details" class="account-container">
+                <p>Loading account information...</p>
+            </div>
+            <form id="update-contact">
+                <label for="contact-phone">Update Phone:</label>
+                <input type="tel" id="contact-phone" name="phone" placeholder="+1-555-555-5555">
+                <button type="submit">Save</button>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>System Status</h2>
+            <p>Monitor real-time system updates.</p>
+            <div class="status-tracker">
+                <div class="status-entry">
+                    <strong>System Boot:</strong> <span id="boot-status">Initializing...</span>
+                </div>
+                <div class="status-entry">
+                    <strong>Current Activity:</strong> <span id="activity-status">Fetching Client Data</span>
+                </div>
+                <div class="status-entry">
+                    <strong>Recent Update:</strong> <span id="update-status-1">Account Verified</span>
+                </div>
+                <div class="status-entry">
+                    <strong>Recent Update:</strong> <span id="update-status-2">Transactions Synced</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Client Portal. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>
