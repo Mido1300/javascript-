@@ -1,83 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime User Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Training Program</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="dashboard-wrapper">
-        <header class="dashboard-header">
-            <div class="header-inner">
-                <h1>Prime Dashboard</h1>
-                <p>Elite Management Solution</p>
-                <button class="action-btn refresh-btn">Refresh Data</button>
-            </div>
-            <nav class="day-navigation">
-                <button class="day-btn" data-day="1">Day 1</button>
-                <button class="day-btn" data-day="2">Day 2</button>
-                <button class="day-btn" data-day="3">Day 3</button>
-                <button class="day-btn" data-day="4">Day 4</button>
-                <button class="day-btn" data-day="5">Day 5</button>
-                <button class="day-btn" data-day="6">Day 6</button>
-                <button class="day-btn" data-day="7">Day 7</button>
-                <button class="day-btn" data-day="8">Day 8</button>
-                <button class="day-btn" data-day="9">Day 9</button>
-                <button class="day-btn" data-day="10">Day 10</button>
-            </nav>
-        </header>
-
-        <main class="dashboard-content">
-            <section class="card" id="team-section">
-                <h2>Team Members</h2>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="processed-users"></tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section class="card" id="activity-section">
-                <h2>Daily Tasks</h2>
-                <ul id="user-posts" class="activity-feed"></ul>
-            </section>
-
-            <section class="card" id="profile-section">
-                <h2>Featured Member</h2>
-                <div id="user-profile" class="profile-display"></div>
-            </section>
-
-            <section class="card" id="status-section">
-                <h2>Status Monitor</h2>
-                <div class="status-container">
-                    <div class="status-card">
-                        <h3>Initial State</h3>
-                        <pre id="initial-state"></pre>
-                    </div>
-                    <div class="status-card">
-                        <h3>Current State</h3>
-                        <pre id="current-state"></pre>
-                    </div>
-                </div>
-            </section>
-
-            <section class="card" id="logs-section">
-                <h2>System Logs</h2>
-                <pre id="console-output" class="logs-panel"></pre>
-            </section>
-        </main>
-    </div>
-
-    <script type="module" src="app.js"></script>
+  <div id="root"></div>
+  <script type="module">
+    // Dynamically import the task based on query parameter or default to Day2Task
+    const urlParams = new URLSearchParams(window.location.search);
+    const task = urlParams.get('task') || 'Day2Task';
+    import(`./${task}.js`).then(module => {
+      const { default: App } = module;
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    });
+  </script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 </body>
 </html>
