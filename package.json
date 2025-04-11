@@ -1,14 +1,14 @@
 {
   "name": "client-portal",
   "version": "1.0.0",
-  "description": "A client management portal with dynamic data display and system status tracking.",
+  "description": "A professional client management portal",
   "main": "main.js",
   "type": "module",
   "scripts": {
     "start": "serve .",
-    "test": "echo \"Error: no tests configured\" && exit 1"
+    "test": "echo \"No tests available\" && exit 1"
   },
-  "keywords": ["client-portal", "dashboard", "javascript", "web-app"],
+  "keywords": ["client-portal", "dashboard", "web-app"],
   "author": "",
   "license": "ISC",
   "dependencies": {
