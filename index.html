@@ -3,78 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Project Dashboard</title>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <h1>Client Portal</h1>
-        <nav>
-            <button id="logout-btn">Log Out</button>
-        </nav>
-    </header>
-    
-    <!-- Main Content Section -->
-    <main>
-        <section class="panel">
-            <h2>Registered Clients</h2>
-            <p>View all active clients, sorted by company name.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Client ID</th>
-                        <th>Company</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="client-list"></tbody>
-            </table>
-        </section>
-
-        <section class="panel">
-            <h2>Recent Transactions</h2>
-            <p>Latest transactions for client ID 1001.</p>
-            <ul id="transaction-history"></ul>
-        </section>
-
-        <section class="panel">
-            <h2>Account Details</h2>
-            <div id="account-details" class="account-container"></div>
-            <form id="update-contact">
-                <label for="contact-phone">Phone Number</label>
-                <input type="tel" id="contact-phone" name="phone" placeholder="+1-555-555-5555">
-                <button type="submit">Update</button>
-            </form>
-        </section>
-
-        <section class="panel">
-            <h2>System Status</h2>
-            <p>Track real-time system updates.</p>
-            <div class="status-tracker">
-                <div class="status-entry">
-                    <strong>System Boot</strong> <span id="boot-status">Initializing...</span>
-                </div>
-                <div class="status-entry">
-                    <strong>Activity</strong> <span id="activity-status">Fetching Data</span>
-                </div>
-                <div class="status-entry">
-                    <strong>Update</strong> <span id="update-status-1">Account Verified</span>
-                </div>
-                <div class="status-entry">
-                    <strong>Update</strong> <span id="update-status-2">Data Synced</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>© 2025 Client Portal</p>
-    </footer>
-
-    <script type="module" src="main.js"></script>
+    <div id="root"></div>
 </body>
 </html>
